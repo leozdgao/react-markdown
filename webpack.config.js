@@ -6,7 +6,7 @@ function getEntries() {
     var entries = {};
     glob.sync(__dirname + '/src/**/*.main.js').forEach(function (name) {
         var n = name.match(/\/([^\/]+?).main.js/)[1];
-        entries[n] = name
+        entries[n] = name;
     });
     return entries;
 }
@@ -34,5 +34,8 @@ module.exports = {
                 loader: 'babel'
             }
         ]
+    },
+    resolve: {
+        extensions: ['', '.js', '.jsx']
     }
 }

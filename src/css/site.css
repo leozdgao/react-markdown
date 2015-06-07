@@ -1,0 +1,41 @@
+/* Style for Tag Input */
+.tag-input {
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: .5em;
+  padding: .3em .5em;
+  height: 2.2em;
+  margin: 20px 0;
+}
+.tag {
+  display: inline-block;
+  padding: .2em .4em;
+  margin-right: .3em;
+  color: #333;
+  background-color: lightblue;
+  border-radius: .2em;
+  font-size: .8em;
+  font-weight: 300;
+}
+.tag .tag-remove {
+  display: inline-block;
+  color: #666;
+  font-size: .7em;
+  font-weight: 700;
+  cursor: pointer;
+}
+.tag-input input {
+  border: none;
+  border-radius: 1em;
+  margin-left: .2em;
+  cursor: default;
+  font-size: .8em;
+}
+.tag-input input:focus {
+  outline: 0;
+}
+.tag-input .hidden {
+  position: absolute;
+  opacity: 0;
+  left: 0;
+}

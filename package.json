@@ -2,9 +2,11 @@
   "name": "react-markdown",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "repository": {
+    "github": "https://github.com/leozdgao/react-markdown.git"
+  },
   "scripts": {},
-  "author": "",
+  "author": "leozdgao",
   "license": "MIT",
   "dependencies": {
     "bootstrap": "^3.3.4",
@@ -25,6 +27,7 @@
     "gulp-rename": "^1.2.0",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-webpack": "^1.4.0",
+    "jsx-loader": "^0.13.2",
     "node-libs-browser": "^0.5.2",
     "webpack": "^1.9.10"
   }
