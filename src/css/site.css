@@ -39,3 +39,28 @@
   opacity: 0;
   left: 0;
 }
+
+/* Style for Editor */
+.md-panel {
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: .5em;
+  height: 300px;
+}
+.md-toolbar {
+  
+}
+.md-preview, .md-editor {
+  display: inline-block;
+  height: 100%;
+  width: 50%;
+}
+.md-editor textarea{
+  border-style: none;
+  resize: none;
+  outline: 0;
+  margin: 2px;
+}
+.md-resizer {
+
+}
