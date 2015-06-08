@@ -2,7 +2,7 @@
 .tag-input {
   position: relative;
   border: 1px solid #ccc;
-  border-radius: .5em;
+  border-radius: 3px;
   padding: .3em .5em;
   height: 2.2em;
   margin: 20px 0;
@@ -43,23 +43,52 @@
 /* Style for Editor */
 .md-panel {
   display: block;
+  position: relative;
   border: 1px solid #ccc;
-  border-radius: .5em;
-  height: 300px;
+  border-radius: 3px;
 }
 .md-toolbar {
-  
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  /*box-shadow: 0 0 1px #ccc;*/
+  z-index: 10;
 }
-.md-preview, .md-editor {
-  display: inline-block;
-  height: 100%;
+.md-toolbar .tb-btn {
+
+}
+.md-editor {
   width: 50%;
+  height: auto;
 }
-.md-editor textarea{
+.md-editor textarea {
   border-style: none;
   resize: none;
   outline: 0;
-  margin: 2px;
+  height: 100%;
+  min-height: 420px;
+  width: 100%;
+  margin-top: 40px;
+  padding: 0 15px;
+}
+.md-preview {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  left: 50%;
+  top: 0;
+  background-color: #f6f6f6;
+  padding: 45px 20px 20px 20px;
+}
+.md-spliter {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  border-left: 1px solid #ccc;
+  z-index: 105;
 }
 .md-resizer {
 

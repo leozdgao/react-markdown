@@ -9,6 +9,7 @@ export default React.createClass({
           <textarea></textarea>
         </div>
         <div className="md-preview"></div>
+        <div className="md-spliter"></div>
       </div>
       );
   }
