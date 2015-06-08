@@ -53,7 +53,7 @@
   height: 30px;
   background-color: #fff;
   border-bottom: 1px solid #ccc;
-  /*box-shadow: 0 0 1px #ccc;*/
+  box-shadow: 0 0 1px #ccc;
   z-index: 10;
 }
 .md-toolbar .tb-btn {

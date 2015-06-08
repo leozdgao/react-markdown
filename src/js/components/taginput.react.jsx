@@ -1,5 +1,7 @@
 /// <reference path="../../typings/react/react.d.ts"/>
 import React from 'react';
+import tagStore, {setTags} from '../stores/taginput.store';
+import tagActions from '../actions/taginput.action';
 
 export default React.createClass({
   getInitialState: function () {
@@ -10,11 +12,20 @@ export default React.createClass({
   componentDidMount: function () {
     let input = React.findDOMNode(this.refs.input);
     this._initialInputWidth = this._getElementWidth(input);
+
+    // init tags
+    setTags(this.state.tags);
+    tagStore.listen(this._updateView);
   },
   render: function () {
     let that = this;
     let tags = this.state.tags.map((tag, i) => {
-      return (<span className="tag">{tag} <span className="tag-remove" onClick={function() { that.removeTag(i); }}>X</span></span>); 
+      return (
+        <span className="tag">
+          {tag}
+          <span className="tag-remove" onClick={function() { tagActions.removeTag(i); }}> X</span>
+        </span>
+      );
     });
 
     return (
@@ -25,17 +36,7 @@ export default React.createClass({
       </div>
       );
   },
-  addTag: function (val) {
-    let tags = this.state.tags;
-    if(val && tags.indexOf(val) < 0) tags.push(val);
-    
-    this.setState({ tags: tags });
-  },
-  removeTag: function (i) {
-    let tags = this.state.tags;
-    if(typeof i == 'undefined') i = tags.length - 1;
-    tags.splice(i, 1);
-    
+  _updateView: function (tags) {
     this.setState({ tags: tags });
   },
   _click: function () {
@@ -52,11 +53,11 @@ export default React.createClass({
         let val = input.value.trim();
         input.value = "";
         input.style.width = this._initialInputWidth + "px";
-        this.addTag(val);
+        tagActions.addTag(val);
         break;
       };
       case 8: { // remove tag if 'del'
-        if(input.value == '') this.removeTag(); 
+        if(input.value == '') tagActions.removeTag();
         break;
       };
       default: {

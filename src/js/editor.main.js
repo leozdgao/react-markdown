@@ -1,5 +1,5 @@
 import React from 'react';
-import EditForm from './components/form.react';
+import EditorForm from './components/form.react';
 
 let mount = document.getElementById('editor');
-React.render(<EditForm />, mount);
+React.render(<EditorForm />, mount);
