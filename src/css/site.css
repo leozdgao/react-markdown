@@ -6,6 +6,7 @@
   padding: .3em .5em;
   height: 2.2em;
   margin: 20px 0;
+  cursor: text;
 }
 .tag {
   display: inline-block;
@@ -28,7 +29,6 @@
   border: none;
   border-radius: 1em;
   margin-left: .2em;
-  cursor: default;
   font-size: .8em;
 }
 .tag-input input:focus {

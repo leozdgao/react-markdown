@@ -21,7 +21,7 @@ export default React.createClass({
     let that = this;
     let tags = this.state.tags.map((tag, i) => {
       return (
-        <span className="tag">
+        <span key={i} className="tag">
           {tag}
           <span className="tag-remove" onClick={function() { tagActions.removeTag(i); }}> X</span>
         </span>
