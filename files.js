@@ -1,13 +1,13 @@
 module.exports = {
     js: [
-        'src/js/**/*.js',
-        'src/js/**/*.jsx'
+      'src/js/**/*.js',
+      'src/js/**/*.jsx'
     ],
     css: [
-        'src/scss/site.scss'
+      'src/scss/site.scss'
     ],
     views: [
-        'index.html'
+      'index.html'
     ],
     release: './dist',
     entry: './index.html'
