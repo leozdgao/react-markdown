@@ -4,12 +4,11 @@ module.exports = {
         'src/js/**/*.jsx'
     ],
     css: [
-        'src/css/**/*.css'
+        'src/scss/site.scss'
     ],
     views: [
         'index.html'
     ],
-    destCss: 'style.css',
     release: './dist',
     entry: './index.html'
 };

@@ -20,7 +20,7 @@ module.exports = {
     },
     externals: {
         'react': 'React',
-        'showdown': 'showdown'
+        'marked': 'marked'
     },
     devtool: 'source-map',
     plugins: [

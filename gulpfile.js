@@ -8,6 +8,7 @@ var files = require('./files');
 // load dependencies
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
+var sass = require('gulp-sass');
 var minify = require('gulp-minify-css'); //css
 var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
@@ -25,7 +26,7 @@ gulp.task('release:css', function() {
     //css
     return gulp.src(files.css)
         .pipe(sourcemaps.init())
-        .pipe(concat(files.destCss))
+        .pipe(sass())
         .pipe(autoprefixer({
             browsers: ['> 5%', 'last 5 version']
         })) // auto-prefix
@@ -88,8 +89,8 @@ function getChromeAppName() {
     switch (os.platform()) {
         case 'win32':
             return 'chrome';
-        case 'darwin':
-            return 'google chrome'; // mac os
+        case 'darwin': // mac os
+            return 'google chrome';
         case 'linux':
             return 'google-chrome';
     }

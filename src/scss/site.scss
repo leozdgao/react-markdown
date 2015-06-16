@@ -1,3 +1,5 @@
+@import "reset.scss";
+
 /* Style for Tag Input */
 .tag-input {
   position: relative;
@@ -17,27 +19,30 @@
   border-radius: .2em;
   font-size: .8em;
   font-weight: 300;
+
+  .tag-remove {
+    display: inline-block;
+    color: #666;
+    font-size: .7em;
+    font-weight: 700;
+    cursor: pointer;
+  }
 }
-.tag .tag-remove {
-  display: inline-block;
-  color: #666;
-  font-size: .7em;
-  font-weight: 700;
-  cursor: pointer;
-}
-.tag-input input {
-  border: none;
-  border-radius: 1em;
-  margin-left: .2em;
-  font-size: .8em;
-}
-.tag-input input:focus {
-  outline: 0;
-}
-.tag-input .hidden {
-  position: absolute;
-  opacity: 0;
-  left: 0;
+.tag-input {
+  input {
+    border: none;
+    border-radius: 1em;
+    margin-left: .2em;
+    font-size: .8em;
+
+    &:focus { outline: 0 }
+  }
+
+  .hidden {
+    position: absolute;
+    opacity: 0;
+    left: 0;
+  }
 }
 
 /* Style for Editor */
@@ -81,6 +86,7 @@
   top: 0;
   background-color: #f6f6f6;
   padding: 45px 20px 20px 20px;
+  overflow: auto;
 }
 .md-spliter {
   position: absolute;
