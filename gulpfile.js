@@ -6,7 +6,6 @@ var os = require('os');
 var files = require('./files');
 
 // load dependencies
-var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var minify = require('gulp-minify-css'); //css
@@ -15,7 +14,6 @@ var sourcemaps = require('gulp-sourcemaps');
 var webpack = require('gulp-webpack');
 var connect = require('gulp-connect');
 var open = require('gulp-open');
-var del = require('del');
 
 // release
 gulp.task('default', ['release']);
@@ -24,9 +22,9 @@ gulp.task('release', ['release:css', 'release:js']);
 gulp.task('release:css', function() {
 
     //css
-    return gulp.src(files.css)
+    return gulp.src(files.sass_main)
         .pipe(sourcemaps.init())
-        .pipe(sass())
+        .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
             browsers: ['> 5%', 'last 5 version']
         })) // auto-prefix

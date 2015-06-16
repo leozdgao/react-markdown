@@ -4,11 +4,12 @@ module.exports = {
       'src/js/**/*.jsx'
     ],
     css: [
-      'src/scss/site.scss'
+      'src/scss/**/*.scss'
     ],
     views: [
       'index.html'
     ],
+    sass_main: 'src/scss/site.scss',
     release: './dist',
     entry: './index.html'
 };
