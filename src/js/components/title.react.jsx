@@ -9,7 +9,9 @@ export default React.createClass({
   render: function() {
     return (
       <div className="editor-title">
-        <input className="textbox" name="title" ref="title" type="text" value={this.state.title} onChange={this._onChange} placeholder="来，起个响亮的标题吧！" />
+        <input className="textbox" name="title" ref="title" type="text"
+          value={this.state.title} onChange={this._onChange}
+          placeholder="来，取个响亮的标题吧！" />
       </div>
     );
   },

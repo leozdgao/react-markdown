@@ -9,13 +9,44 @@
     border: none;
     font-size: 0.9em;
     line-height: 1.33;
+
+    code {
+      font-size: inherit;
+      color: inherit;
+      padding: 0;
+      background-color: transparent;
+      border-radius: 0;
+    }
   }
 
   code {
     color: #c7254e;
     background-color: #eee;
-    // font-size: 0.9em;
-    // padding: 0 5px;
+    font-size: 0.9em;
+    padding: 2px 4px;
     border-radius: 3px;
+  }
+
+  blockquote {
+    margin: 0;
+    padding: 5px 10px 5px 15px;
+    border-left: 5px solid $color;
+    background-color: #eee;
+    border-radius: 3px;
+  }
+
+  table {
+    border: 1px solid $border_color;
+    thead tr { background-color: #eee; }
+    tbody tr {
+      border-top: 1px solid $border_color;
+      &:nth-of-type(odd) { background-color: #fff; }
+      &:nth-of-type(even) { background-color: #eee; }
+    }
+    th, td {
+      padding: 8px;
+      border-left: 1px solid $border_color;
+    }
+
   }
 }

@@ -51,8 +51,6 @@
 }
 
 /* Style for Editor */
-$editor_height: 540px;
-
 .md-panel {
   display: block;
   position: relative;
@@ -96,6 +94,7 @@ $editor_height: 540px;
   background-color: #f6f6f6;
   padding: 45px 20px 20px 20px;
   overflow: auto;
+  line-height: 1.33;
 }
 .md-spliter {
   position: absolute;

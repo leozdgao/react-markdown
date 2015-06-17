@@ -82,7 +82,8 @@ export default React.createClass({
   _getState: function(tags) {
     return {
       tags: tags,
-      placeholder: tags.length ? "": "标签，如JavaScript"
+      placeholder: "标签，如JavaScript"
+      // placeholder: tags.length ? "": "标签，如JavaScript"
     };
   },
   _getElementWidth: function (elem) {
