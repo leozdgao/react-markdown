@@ -20,7 +20,8 @@ module.exports = {
     },
     externals: {
         'react': 'React',
-        'marked': 'marked'
+        'marked': 'marked',
+        'highlight': 'hljs'
     },
     devtool: 'source-map',
     plugins: [

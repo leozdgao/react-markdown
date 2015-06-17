@@ -1,0 +1,110 @@
+#editor {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 1600px;
+}
+
+.editor-title {
+  font-size: 18px;
+
+  .textbox {
+    line-height: 1.33;
+  }
+}
+
+/* Style for Tag Input */
+.tag-input {
+  position: relative;
+  margin: 20px 0;
+  cursor: text;
+
+  input {
+    line-height: 1.33;
+    padding: 2px 0;
+  }
+}
+.tag {
+  display: inline-block;
+  padding: .2em .4em;
+  margin-right: .3em;
+  color: $tagcolor;
+  background-color: $tagbkg;
+  border-radius: .2em;
+  font-size: .8em;
+  font-weight: 300;
+}
+.tag-input {
+  input {
+    border: none;
+    border-radius: 1em;
+    margin-left: .2em;
+    font-size: .8em;
+
+    &:focus { outline: 0 }
+  }
+
+  .hidden {
+    position: absolute;
+    opacity: 0;
+    left: 0;
+  }
+}
+
+/* Style for Editor */
+$editor_height: 540px;
+
+.md-panel {
+  display: block;
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+}
+.md-toolbar {
+  position: absolute;
+  width: 100%;
+  height: $toolbarHeight;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 0 1px #ccc;
+  z-index: 10;
+}
+.md-toolbar .tb-btn {
+
+}
+.md-editor {
+  width: 50%;
+  height: auto;
+}
+.md-editor textarea {
+  border-style: none;
+  resize: none;
+  outline: 0;
+  height: 100%;
+  min-height: $editor_height;
+  width: 100%;
+  margin-top: $toolbarHeight + 10px;
+  padding: 0 15px;
+  line-height: 1.33;
+}
+.md-preview {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  left: 50%;
+  top: 0;
+  background-color: #f6f6f6;
+  padding: 45px 20px 20px 20px;
+  overflow: auto;
+}
+.md-spliter {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  border-left: 1px solid #ccc;
+  z-index: 105;
+}
+.md-resizer {
+
+}

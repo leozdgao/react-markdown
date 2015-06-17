@@ -17,7 +17,7 @@ export default React.createClass({
         <div className="md-editor">
           <textarea ref="editor" onChange={this._onChange}></textarea>
         </div>
-        <div ref="preview" className="md-preview" dangerouslySetInnerHTML={this.state}></div>
+        <div ref="preview" className="md-preview markdown" dangerouslySetInnerHTML={this.state}></div>
         <div className="md-spliter"></div>
       </div>
     );

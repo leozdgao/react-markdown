@@ -2,17 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="dist/vendors/mono-blue.css">
     <link rel="stylesheet" href="dist/site.min.css">
     <title>React Markdown Editor</title>
 </head>
 <body>
-    <div class="container">
-        <h3>写文章</h3>
-        <div id="editor"></div>
-    </div>
+    <div id="editor" class="container"></div>
 
     <script src="node_modules/react/dist/react.js"></script>
     <script src="node_modules/marked/lib/marked.js"></script>
+    <script src="dist/vendors/highlight.pack.js"></script>
     <script src="dist/editor.min.js"></script>
 </body>
 </html>

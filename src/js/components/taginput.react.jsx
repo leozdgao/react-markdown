@@ -1,43 +1,28 @@
-/// <reference path="../../typings/react/react.d.ts"/>
 import React from 'react';
-import tagStore, {setTags} from '../stores/taginput.store';
-import tagActions from '../actions/taginput.action';
 
 export default React.createClass({
   getInitialState: function () {
-    return {
-      tags: this.props.tags || []
-    };
+    let tags = this.props.tags || [];
+    return this._getState(tags);
   },
   componentDidMount: function () {
     let input = React.findDOMNode(this.refs.input);
     this._initialInputWidth = this._getElementWidth(input);
-
-    // init tags
-    setTags(this.state.tags);
-    tagStore.listen(this._updateView);
   },
   render: function () {
-    let that = this;
     let tags = this.state.tags.map((tag, i) => {
       return (
-        <span key={i} className="tag">
-          {tag}
-          <span className="tag-remove" onClick={function() { tagActions.removeTag(i); }}> X</span>
-        </span>
+        <span key={i} className="tag">{tag}</span>
       );
     });
 
     return (
-      <div className="tag-input" onClick={this._click}>
+      <div className="textbox tag-input" onClick={this._click}>
         {tags}
-        <input type="text" ref="input" onKeyDown={this._keyDown} onKeyUp={this._keyUp} />
+        <input type="text" ref="input" onKeyDown={this._keyDown} onKeyUp={this._keyUp} placeholder={this.state.placeholder} />
         <span className="hidden" ref="hidden"></span>
       </div>
       );
-  },
-  _updateView: function (tags) {
-    this.setState({ tags: tags });
   },
   _click: function () {
     let input = React.findDOMNode(this.refs.input);
@@ -45,19 +30,19 @@ export default React.createClass({
   },
   _keyDown: function (e) {
     let input = React.findDOMNode(this.refs.input);
-    
+
     switch(e.keyCode) {
       case 188: { // add tag if ','
         e.preventDefault();  // prevent the input of ','
-          
+
         let val = input.value.trim();
         input.value = "";
         input.style.width = this._initialInputWidth + "px";
-        tagActions.addTag(val);
+        this._addTag(val);
         break;
       };
       case 8: { // remove tag if 'del'
-        if(input.value == '') tagActions.removeTag();
+        if(input.value == '') this._removeTag();
         break;
       };
       default: {
@@ -76,6 +61,29 @@ export default React.createClass({
     if(wHidden + 20 > wInput) {
       input.style.width = (wInput + 20) + "px";
     }
+  },
+  _addTag: function(tag) {
+    let tags = this.state.tags;
+    if(tag && tags.indexOf(tag) < 0) {
+      tags.push(tag);
+      this.setState(this._getState(tags));
+    }
+  },
+  _removeTag: function(index) {
+    let tags = this.state.tags;
+
+    if(typeof index == 'undefined') {
+      index = tags.length - 1;
+    }
+
+    tags.splice(index, 1);
+    this.setState(this._getState(tags));
+  },
+  _getState: function(tags) {
+    return {
+      tags: tags,
+      placeholder: tags.length ? "": "标签，如JavaScript"
+    };
   },
   _getElementWidth: function (elem) {
     let rect = elem.getBoundingClientRect();
