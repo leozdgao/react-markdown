@@ -1,11 +1,21 @@
 .markdown {
   pre {
     background-color: #eee;
+    color: #555;
+    border-radius: 3px;
     padding: 10px;
     max-height: 500px;
     overflow: auto;
     border: none;
     font-size: 0.9em;
     line-height: 1.33;
+  }
+
+  code {
+    color: #c7254e;
+    background-color: #eee;
+    // font-size: 0.9em;
+    // padding: 0 5px;
+    border-radius: 3px;
   }
 }
