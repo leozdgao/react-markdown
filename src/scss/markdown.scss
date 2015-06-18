@@ -15,7 +15,6 @@
       color: inherit;
       padding: 0;
       background-color: transparent;
-      border-radius: 0;
     }
   }
 
@@ -24,7 +23,6 @@
     background-color: #eee;
     font-size: 0.9em;
     padding: 2px 4px;
-    border-radius: 3px;
   }
 
   blockquote {
@@ -32,11 +30,11 @@
     padding: 5px 10px 5px 15px;
     border-left: 5px solid $color;
     background-color: #eee;
-    border-radius: 3px;
   }
 
   table {
     border: 1px solid $border_color;
+
     thead tr { background-color: #eee; }
     tbody tr {
       border-top: 1px solid $border_color;
@@ -47,6 +45,10 @@
       padding: 8px;
       border-left: 1px solid $border_color;
     }
+  }
 
+  hr {
+    border-style: solid;
+    border-color: #ccc;
   }
 }

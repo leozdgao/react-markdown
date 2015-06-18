@@ -91,6 +91,9 @@
       color: $light_color;
       background-color: #eee;
     }
+    &:active {
+      box-shadow: inset 0 1px 5px rgba(0,0,0,0.075);
+    }
   }
 }
 .md-editor {
