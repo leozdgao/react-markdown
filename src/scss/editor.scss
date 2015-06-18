@@ -6,38 +6,35 @@
 
 .editor-title {
   font-size: 18px;
+}
 
-  .textbox {
-    line-height: 1.33;
-  }
+.editor-title .textbox,
+.md-editor textarea,
+.md-preview,
+.tag-input input {
+  line-height: 1.33;
 }
 
 /* Style for Tag Input */
+.tag {
+  display: inline-block;
+  padding: 3px 8px;
+  margin-right: 5px;
+  color: $tagcolor;
+  background-color: $tagbkg;
+  border-radius: 3px;
+  font-size: .8em;
+  font-weight: 300;
+}
 .tag-input {
   position: relative;
   margin: 20px 0;
   cursor: text;
 
   input {
-    line-height: 1.33;
-    padding: 2px 0;
-  }
-}
-.tag {
-  display: inline-block;
-  padding: .2em .4em;
-  margin-right: .3em;
-  color: $tagcolor;
-  background-color: $tagbkg;
-  border-radius: .2em;
-  font-size: .8em;
-  font-weight: 300;
-}
-.tag-input {
-  input {
     border: none;
-    border-radius: 1em;
-    margin-left: .2em;
+    padding: 2px 0;
+    margin-left: 3px;
     font-size: .8em;
 
     &:focus { outline: 0 }
@@ -57,6 +54,7 @@
   border: 1px solid #ccc;
   border-radius: 3px;
   font-size: 14px;
+  margin-bottom: 20px;
 }
 .md-toolbar {
   position: absolute;
@@ -83,7 +81,6 @@
   width: 100%;
   margin-top: $toolbarHeight + 10px;
   padding: 0 15px;
-  line-height: 1.33;
 }
 .md-preview {
   position: absolute;
@@ -94,7 +91,6 @@
   background-color: #f6f6f6;
   padding: 45px 20px 20px 20px;
   overflow: auto;
-  line-height: 1.33;
 }
 .md-spliter {
   position: absolute;
@@ -105,5 +101,13 @@
   z-index: 105;
 }
 .md-resizer {
-
+  position: absolute;
+  width: $resizer_width;
+  height: 4px;
+  left: 50%;
+  margin-left: - $resizer_width / 2;
+  bottom: -7px;
+  border-top: 1px solid $border_color;
+  border-bottom: 1px solid $border_color;
+  cursor: row-resize;
 }
