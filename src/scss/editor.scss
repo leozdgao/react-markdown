@@ -60,13 +60,38 @@
   position: absolute;
   width: 100%;
   height: $toolbarHeight;
+  margin: 0;
+  padding: 0 5px;
   background-color: #fff;
   border-bottom: 1px solid #ccc;
   box-shadow: 0 0 1px #ccc;
   z-index: 10;
 }
-.md-toolbar .tb-btn {
+.tb-btn {
+  float: left;
+  font-size: 16px;
+  color: #aaa;
+  list-style: none;
+  margin: 0 2px;
 
+  &.spliter {
+    border-left: 1px solid $border_color;
+    margin: 6px 2px;
+    height: 24px;
+  }
+
+  a {
+    display: inline-block;
+    width: 36px;
+    text-align: center;
+    padding: 9px 0;
+    cursor: pointer;
+
+    &:hover {
+      color: $light_color;
+      background-color: #eee;
+    }
+  }
 }
 .md-editor {
   width: 50%;
