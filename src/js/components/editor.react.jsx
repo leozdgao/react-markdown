@@ -5,7 +5,14 @@ export default React.createClass({
   getInitialState: function() {
     return {
       content: { __html: '' },
-      editorHeight: 540
+      editorHeight: 540,
+      modeControlStyle: {
+        btnEdit: '',
+        btnSplit: 'active',
+        btnPreview: '',
+        pEditor: 'md-editor',
+        pPreview: 'md-preview markdown'
+      }
     };
   },
   componentDidMount: function() {
@@ -31,18 +38,30 @@ export default React.createClass({
           <li className="tb-btn"><a title="无序列表" onClick={this._listUlText}><i className="fa fa-list-ul"></i></a></li> {/* list-ul */}
           <li className="tb-btn"><a title="标题" onClick={this._headerText}><i className="fa fa-header"></i></a></li> {/* header */}
 
-          <li className="tb-btn pull-right"><a title="预览模式"><i className="fa fa-eye"></i></a></li> { /* preview mode */ }
-          <li className="tb-btn pull-right"><a title="分屏模式"><i className="fa fa-columns"></i></a></li> { /* split mode */ }
-          <li className="tb-btn pull-right"><a title="编辑模式"><i className="fa fa-pencil"></i></a></li> { /* edit mode */ }
+          <li className="tb-btn pull-right">
+            <a className={this.state.modeControlStyle["btnPreview"]} onClick={this._previewMode} title="预览模式">
+              <i className="fa fa-eye"></i>
+            </a>
+          </li> { /* preview mode */ }
+          <li className="tb-btn pull-right">
+            <a className={this.state.modeControlStyle["btnSplit"]} onClick={this._splitMode} title="分屏模式">
+              <i className="fa fa-columns"></i>
+            </a>
+          </li> { /* split mode */ }
+          <li className="tb-btn pull-right">
+            <a className={this.state.modeControlStyle["btnEdit"]} onClick={this._editMode} title="编辑模式">
+              <i className="fa fa-pencil"></i>
+            </a>
+          </li> { /* edit mode */ }
           <li className="tb-btn spliter pull-right"></li>
           <li className="tb-btn pull-right"><a title="全屏模式"><i className="fa fa-arrows-alt"></i></a></li> {/* full-screen */}
         </ul>
-        <div className="md-editor">
+        <div className={this.state.modeControlStyle["pEditor"]}>
           <textarea ref="editor" onChange={this._onChange} style={{height: this.state.editorHeight + 'px'}}></textarea>
         </div>
-        <div ref="preview" className="md-preview markdown" dangerouslySetInnerHTML={this.state.content}></div>
+        <div className={this.state.modeControlStyle["pPreview"]} ref="preview" dangerouslySetInnerHTML={this.state.content}></div>
         <div className="md-spliter"></div>
-        <div ref="resizer" className="md-resizer" onMouseDown={this._mousedown} onDragStart={this._dragstart}></div>
+        <div className="md-resizer" ref="resizer" onMouseDown={this._mousedown} onDragStart={this._dragstart}></div>
       </div>
     );
   },
@@ -105,5 +124,42 @@ export default React.createClass({
   },
   _headerText: function() {
     this._preInputText("## 标题", 3, 5);
+  },
+  _editMode: function() {
+    this.setState({modeControlStyle: this._getModeStyle('edit')});
+  },
+  _splitMode: function() {
+    this.setState({modeControlStyle: this._getModeStyle('split')});
+  },
+  _previewMode: function() {
+    this.setState({modeControlStyle: this._getModeStyle('preview')});
+  },
+  _getModeStyle: function(mode) {
+    switch (mode) {
+      case 'split':
+        return {
+          btnEdit: '',
+          btnSplit: 'active',
+          btnPreview: '',
+          pEditor: 'md-editor',
+          pPreview: 'md-preview markdown'
+        }
+      case 'edit':
+        return {
+          btnEdit: 'active',
+          btnSplit: '',
+          btnPreview: '',
+          pEditor: 'md-editor expand',
+          pPreview: 'md-preview markdown shrink'
+        }
+      case 'preview':
+        return {
+          btnEdit: '',
+          btnSplit: '',
+          btnPreview: 'active',
+          pEditor: 'md-editor',
+          pPreview: 'md-preview markdown expand'
+        }
+    };
   }
 });

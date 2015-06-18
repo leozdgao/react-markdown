@@ -1,4 +1,13 @@
 .markdown {
+  a {
+    color: $light_color;
+    text-decoration: none;
+
+    &:hover {
+      color: #339AFF;
+    }
+  }
+
   pre {
     background-color: #eee;
     color: #555;

@@ -55,6 +55,7 @@
   border-radius: 3px;
   font-size: 14px;
   margin-bottom: 20px;
+  overflow: hidden;
 }
 .md-toolbar {
   position: absolute;
@@ -83,11 +84,12 @@
   a {
     display: inline-block;
     width: 36px;
+    height: 36px;
     text-align: center;
     padding: 9px 0;
     cursor: pointer;
 
-    &:hover {
+    &:hover, &.active {
       color: $light_color;
       background-color: #eee;
     }
@@ -99,16 +101,20 @@
 .md-editor {
   width: 50%;
   height: auto;
-}
-.md-editor textarea {
-  border-style: none;
-  resize: none;
-  outline: 0;
-  height: 100%;
-  min-height: $editor_height;
-  width: 100%;
-  margin-top: $toolbarHeight + 10px;
-  padding: 0 15px;
+  transition: width .3s;
+
+  &.expand { width: 100%; }
+
+  textarea {
+    border-style: none;
+    resize: none;
+    outline: 0;
+    height: 100%;
+    min-height: $editor_height;
+    width: 100%;
+    margin-top: $toolbarHeight + 10px;
+    padding: 0 15px;
+  }
 }
 .md-preview {
   position: absolute;
@@ -118,13 +124,25 @@
   top: 0;
   background-color: #f6f6f6;
   padding: 45px 20px 20px 20px;
+  border-left: 1px solid $border_color;
   overflow: auto;
+  transition: left .3s, width .3s;
+
+  &.expand {
+    left: 0;
+    width: 100%;
+    border-left-style: none;
+  }
+  &.shrink {
+    left: 100%;
+    width: 0;
+  }
 }
 .md-spliter {
   position: absolute;
   top: 0;
   left: 50%;
-  height: 100%;
+  height: $toolbarHeight;
   border-left: 1px solid #ccc;
   z-index: 105;
 }
@@ -138,4 +156,8 @@
   border-top: 1px solid $border_color;
   border-bottom: 1px solid $border_color;
   cursor: row-resize;
+}
+.md-editor, .md-preview {
+  // &.expand { width: 100%; }
+  // &.shrink { width: 0 }
 }
