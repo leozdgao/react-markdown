@@ -68,7 +68,8 @@
 // responsive container
 .container {
   margin: 0 auto;
-  padding: 0 15px;
+  padding-left: 15px;
+  padding-right: 15px;
 
   @media screen and (min-width: 768px) {
       width: 750px;
