@@ -12,6 +12,40 @@
     // box-shadow: 0 0 5px $light_color;
   }
 }
+.btn {
+  display: inline-block;
+  outline: 0;
+  color: #fff;
+  border-style: none;
+  border-radius: 3px;
+  padding: 5px 16px;
+  text-align: center;
+
+  &:active {
+    box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.125);
+  }
+
+  &.primary {
+    background-color: $primary_color;
+
+    &:disabled, &.disable {
+      background-color: $primary_disable_color;
+      cursor: auto;
+    }
+    // &:active, &:hover {
+    //   background-color: $primary_color;
+    // }
+  }
+  &.default {
+    background-color: #fff;
+    color: inherit;
+    border: 1px solid $border_color;
+
+    &:active, &:hover {
+      background-color: #eee;
+    }
+  }
+}
 
 .clearfix {
   &:before, &:after {
@@ -25,6 +59,10 @@
 
 .hidden {
   display: none;
+}
+
+.help-text {
+  font-size: .8em;
 }
 
 // responsive container

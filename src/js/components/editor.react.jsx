@@ -4,8 +4,6 @@ import marked from 'marked';
 export default React.createClass({
   getInitialState: function() {
     return {
-      content: { __html: '' },
-      // editorHeight: 540,
       modeControlStyle: {
         btnEdit: '',
         btnSplit: 'active',
@@ -17,11 +15,10 @@ export default React.createClass({
     };
   },
   componentDidMount: function() {
-    // check dom node
+    // cache dom node
     this.textControl = React.findDOMNode(this.refs.editor);
     this.previewControl = React.findDOMNode(this.refs.preview);
     this.resizer = React.findDOMNode(this.refs.resizer);
-    // this.minEditorHeight = this.state.editorHeight;
   },
   render: function() {
     return (
@@ -61,9 +58,9 @@ export default React.createClass({
           </ul>
         </div>
         <div className={this.state.modeControlStyle["pEditor"]}>
-          <textarea ref="editor" name="content" onChange={this._onChange}></textarea>  {/*style={{height: this.state.editorHeight + 'px'}}*/}
+          <textarea ref="editor" name="content" onChange={this._onChange}></textarea>{/*style={{height: this.state.editorHeight + 'px'}}*/}
         </div>
-        <div className={this.state.modeControlStyle["pPreview"]} ref="preview" dangerouslySetInnerHTML={this.state.content}></div>
+        <div className={this.state.modeControlStyle["pPreview"]} ref="preview" dangerouslySetInnerHTML={{__html: this.props.content}}></div>
         <div className="md-spliter"></div>
         {/*<div className="md-resizer" ref="resizer" onMouseDown={this._mousedown} onDragStart={this._dragstart}></div>*/}
       </div>
@@ -73,8 +70,7 @@ export default React.createClass({
     if(this._ltr) clearTimeout(this._ltr);
 
     this._ltr = setTimeout(() => {
-      let input = this.textControl.value;
-      this.setState({ content: { __html: marked(input) } });
+      this.props.refreshState(marked(this.textControl.value)); // change state
     }, 300);
   },
   // _mousedown: function(e) {
@@ -100,7 +96,7 @@ export default React.createClass({
     this.textControl.value = origin.slice(0, start) + text + origin.slice(end);
     // pre-select
     this.textControl.setSelectionRange(start + preStart, start + preEnd);
-    this.setState({ content: { __html: marked(this.textControl.value) } });
+    this.props.refreshState(marked(this.textControl.value)); // change state
   },
   _boldText: function() {
     this._preInputText("**加粗文字**", 2, 6);

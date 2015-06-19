@@ -16,4 +16,4 @@ marked.setOptions({
 });
 
 let mount = document.getElementById('editor');
-React.render(<EditorForm />, mount);
+React.render(<EditorForm postUrl={0} />, mount);

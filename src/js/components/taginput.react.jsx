@@ -1,16 +1,16 @@
 import React from 'react';
 
 export default React.createClass({
-  getInitialState: function () {
-    let tags = this.props.tags || [];
-    return this._getState(tags);
-  },
+  // getInitialState: function () {
+  //   let tags = this.props.tags || [];
+  //   return this._getState(tags);
+  // },
   componentDidMount: function () {
     let input = React.findDOMNode(this.refs.input);
     this._initialInputWidth = this._getElementWidth(input);
   },
   render: function () {
-    let tags = this.state.tags.map((tag, i) => {
+    let tags = this.props.tags.map((tag, i) => {
       return (
         <span key={i} className="tag">{tag}</span>
       );
@@ -19,7 +19,7 @@ export default React.createClass({
     return (
       <div className="textbox tag-input" onClick={this._click}>
         {tags}
-        <input type="text" ref="input" onKeyDown={this._keyDown} onKeyUp={this._keyUp} placeholder={this.state.placeholder} />
+        <input type="text" ref="input" onKeyDown={this._keyDown} onKeyUp={this._keyUp} placeholder="标签，如JavaScript" />
         <span className="hidden" ref="hidden"></span>
       </div>
       );
@@ -63,28 +63,21 @@ export default React.createClass({
     }
   },
   _addTag: function(tag) {
-    let tags = this.state.tags;
+    let tags = this.props.tags;
     if(tag && tags.indexOf(tag) < 0) {
       tags.push(tag);
-      this.setState(this._getState(tags));
+      this.props.refreshState(tags); // change state
     }
   },
   _removeTag: function(index) {
-    let tags = this.state.tags;
+    let tags = this.props.tags;
 
     if(typeof index == 'undefined') {
       index = tags.length - 1;
     }
 
     tags.splice(index, 1);
-    this.setState(this._getState(tags));
-  },
-  _getState: function(tags) {
-    return {
-      tags: tags,
-      placeholder: "标签，如JavaScript"
-      // placeholder: tags.length ? "": "标签，如JavaScript"
-    };
+    this.props.refreshState(tags); // change state
   },
   _getElementWidth: function (elem) {
     let rect = elem.getBoundingClientRect();

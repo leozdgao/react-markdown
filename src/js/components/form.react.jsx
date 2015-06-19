@@ -8,23 +8,34 @@ export default React.createClass({
   propTypes: {
     postUrl: React.PropTypes.string
   },
-  getDefaultProps: function() {
+  getInitialState: function() { console.log(this.props.postUrl)
     return {
-      article: {}
-    };
+      title: '',
+      tags: [],
+      content: ''
+    }
   },
   render: function() {
     return (
       <form>
-        <TitleInput title={this.props.article.title} />
-        <TagInput tags={this.props.article.tags} />
-        <Editor content={this.props.article.content} />
+        <h2>写文章</h2>
+        <TitleInput title={this.state.title} refreshState={this._refreshState('title')} />
+        <TagInput tags={this.state.tags} refreshState={this._refreshState('tags')} />
+        <Editor content={this.state.content} refreshState={this._refreshState('content')} />
         <ButtonGroup submit={this._submit} />
       </form>
     );
   },
   _submit: function(e) {
     e.preventDefault();
-    console.log('c');
+    console.log(this.state);
+  },
+  _refreshState: function(key) {
+    let that = this;
+    return function(val) {
+      let temp = {};
+      temp[key] = val;
+      that.setState(temp);
+    };
   }
 });

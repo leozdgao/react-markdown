@@ -1,5 +1,5 @@
 #editor {
-  margin-top: 20px;
+  padding: 20px 0;
   width: 100%;
   max-width: 1600px;
 }
@@ -30,6 +30,7 @@
   position: relative;
   margin: 20px 0;
   cursor: text;
+  background-color: #fff;
 
   input {
     border: none;
@@ -85,12 +86,10 @@
 }
 .md-toolbar, .md-modebar {
   margin: 0;
-
 }
 .md-toolbar {
   padding: 0 5px;
   background-color: #fff;
-
 }
 .tb-btn {
   float: left;
@@ -126,6 +125,7 @@
   width: 50%;
   height: auto;
   transition: width .3s;
+  background-color: #fff;
 
   &.expand { width: 100%; }
 
@@ -183,4 +183,8 @@
 }
 .md-btngroup {
   margin-top: 20px;
+
+  .help-text {
+    margin-left: 15px;
+  }
 }
