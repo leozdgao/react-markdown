@@ -8,7 +8,7 @@ export default React.createClass({
   propTypes: {
     postUrl: React.PropTypes.string
   },
-  getInitialState: function() { console.log(this.props.postUrl)
+  getInitialState: function() {
     return {
       title: '',
       tags: [],
