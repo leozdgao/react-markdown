@@ -1,4 +1,9 @@
 .markdown {
+  h1, h2 {
+    padding-bottom: 8px;
+    border-bottom: 1px dotted #ccc;
+  }
+
   a {
     color: $light_color;
     text-decoration: none;

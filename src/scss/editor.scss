@@ -62,18 +62,35 @@
     bottom: 0;
     left: 0;
     right: 0;
+
+    .md-editor {
+      // position: absolute;
+      // top: 0;
+      // bottom: 0;
+      // left: 0;
+      // right: 0;
+      height: 95.5%;
+    }
   }
 }
-.md-toolbar {
+.md-menubar {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: $toolbarHeight;
-  margin: 0;
-  padding: 0 5px;
-  background-color: #fff;
   border-bottom: 1px solid #ccc;
   box-shadow: 0 0 1px #ccc;
   z-index: 10;
+}
+.md-toolbar, .md-modebar {
+  margin: 0;
+
+}
+.md-toolbar {
+  padding: 0 5px;
+  background-color: #fff;
+
 }
 .tb-btn {
   float: left;
@@ -164,7 +181,6 @@
   border-bottom: 1px solid $border_color;
   cursor: row-resize;
 }
-.md-editor, .md-preview {
-  // &.expand { width: 100%; }
-  // &.shrink { width: 0 }
+.md-btngroup {
+  margin-top: 20px;
 }
