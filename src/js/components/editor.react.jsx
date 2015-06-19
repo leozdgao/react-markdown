@@ -93,6 +93,11 @@ export default React.createClass({
         end = this.textControl.selectionEnd,
         origin = this.textControl.value
 
+    if(start != end) {
+      let exist = origin.slice(start, end); console.log(exist);
+      text = text.slice(0, preStart) + exist + text.slice(preEnd);
+      preEnd = preStart + exist.length;
+    }
     this.textControl.value = origin.slice(0, start) + text + origin.slice(end);
     // pre-select
     this.textControl.setSelectionRange(start + preStart, start + preEnd);
