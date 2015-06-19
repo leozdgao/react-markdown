@@ -12,7 +12,8 @@ export default React.createClass({
         btnPreview: '',
         pEditor: 'md-editor',
         pPreview: 'md-preview markdown'
-      }
+      },
+      panelClass: 'md-panel'
     };
   },
   componentDidMount: function() {
@@ -24,7 +25,7 @@ export default React.createClass({
   },
   render: function() {
     return (
-      <div className="md-panel">
+      <div className={this.state.panelClass}>
         <ul className="md-toolbar">
           <li className="tb-btn"><a title="加粗" onClick={this._boldText}><i className="fa fa-bold"></i></a></li> {/* bold */}
           <li className="tb-btn"><a title="斜体" onClick={this._italicText}><i className="fa fa-italic"></i></a></li> {/* italic */}
@@ -54,7 +55,7 @@ export default React.createClass({
             </a>
           </li> { /* edit mode */ }
           <li className="tb-btn spliter pull-right"></li>
-          <li className="tb-btn pull-right"><a title="全屏模式"><i className="fa fa-arrows-alt"></i></a></li> {/* full-screen */}
+          <li className="tb-btn pull-right"><a title="全屏模式" onClick={this._fullScreen}><i className="fa fa-arrows-alt"></i></a></li> {/* full-screen */}
         </ul>
         <div className={this.state.modeControlStyle["pEditor"]}>
           <textarea ref="editor" onChange={this._onChange} style={{height: this.state.editorHeight + 'px'}}></textarea>
@@ -161,5 +162,15 @@ export default React.createClass({
           pPreview: 'md-preview markdown expand'
         }
     };
+  },
+  _fullScreen: function() {
+    if(this._isFullScreen) {
+      this.setState({panelClass: 'md-panel'});
+      this._isFullScreen = false;
+    }
+    else {
+      this.setState({panelClass: 'md-panel fullscreen'});
+      this._isFullScreen = true;
+    }
   }
 });

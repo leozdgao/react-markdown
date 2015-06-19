@@ -47,8 +47,9 @@
     thead tr { background-color: #eee; }
     tbody tr {
       border-top: 1px solid $border_color;
-      &:nth-of-type(odd) { background-color: #fff; }
-      &:nth-of-type(even) { background-color: #eee; }
+      background-color: #fff;
+      // &:nth-of-type(odd) { background-color: #fff; }
+      // &:nth-of-type(even) { background-color: #eee; }
     }
     th, td {
       padding: 8px;
