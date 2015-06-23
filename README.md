@@ -1,5 +1,7 @@
 ## React markdown
 
+[Demo here.](http://leozdgao.github.io/react-markdown/)
+
 A markdown text editor written in [React](https://facebook.github.io/react/). The markdown syntax parser is the [marked](https://github.com/chjj/marked).
 I try to use ES6 with Babel to write source code, but not use React ES6.
 [Webpack](https://webpack.github.io) is used to bundle source code.
