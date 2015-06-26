@@ -70,7 +70,7 @@
       // bottom: 0;
       // left: 0;
       // right: 0;
-      height: 95.5%;
+      height: 100%;
     }
   }
 }
@@ -136,8 +136,7 @@
     height: 100%;
     min-height: $editor_height;
     width: 100%;
-    margin-top: $toolbarHeight;
-    padding: 10px 15px 0 15px;
+    padding: ($toolbarHeight + 10px) 15px 0 15px;
   }
 }
 .md-preview {
