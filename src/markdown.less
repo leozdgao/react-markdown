@@ -1,15 +1,28 @@
+@color: steelblue;
+@lightColor: #0081FF;
+@borderColor: #ccc;
+
 .markdown {
+  line-height: 1.5;
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 12px 0;
+    // padding-bottom: 8px;
+    // border-bottom: 1px dotted #ccc;
+  }
+
   h1, h2 {
+    margin-top: 20px;
     padding-bottom: 8px;
-    border-bottom: 1px dotted #ccc;
+    border-bottom: 1px dotted @borderColor;
   }
 
   a {
-    color: $light_color;
+    color: @color;
     text-decoration: none;
 
     &:hover {
-      color: #339AFF;
+      color: @lightColor;
     }
   }
 
@@ -18,7 +31,7 @@
     color: #555;
     border-radius: 3px;
     padding: 10px;
-    max-height: 500px;
+    max-height: 700px;
     overflow: auto;
     border: none;
     font-size: 0.9em;
@@ -33,32 +46,31 @@
   }
 
   code {
-    color: #c7254e;
-    background-color: #eee;
+    color: #d82451;
+    background-color: #f6f6f6;
     font-size: 0.9em;
     padding: 2px 4px;
+    margin: 0 2px;
   }
 
   blockquote {
     margin: 0;
     padding: 5px 10px 5px 15px;
-    border-left: 5px solid $color;
+    border-left: 5px solid @color;
     background-color: #eee;
   }
 
   table {
-    border: 1px solid $border_color;
+    border: 1px solid @borderColor;
 
     thead tr { background-color: #eee; }
     tbody tr {
-      border-top: 1px solid $border_color;
+      border-top: 1px solid @borderColor;
       background-color: #fff;
-      // &:nth-of-type(odd) { background-color: #fff; }
-      // &:nth-of-type(even) { background-color: #eee; }
     }
     th, td {
       padding: 8px;
-      border-left: 1px solid $border_color;
+      border-left: 1px solid @borderColor;
     }
   }
 
@@ -66,4 +78,6 @@
     border-style: solid;
     border-color: #ccc;
   }
+
+  img { max-width: 80%; }
 }

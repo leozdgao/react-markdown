@@ -1,57 +1,24 @@
-#editor {
-  padding-bottom: 20px;
-  width: 100%;
-  max-width: 1600px;
-}
+@contentLineHeight: 1.5;
+@toolbarHeight: 37px;
+@editorHeight: 540px;
+@borderColor: #ccc;
+@lightColor: #0081FF;
 
 .editor-title {
-  font-size: 18px;
+  font-size: 16px;
 }
 
-.editor-title .textbox,
 .md-editor textarea,
 .md-preview,
 .tag-input input {
-  line-height: $content_lineHeight;
-}
-
-/* Style for Tag Input */
-.tag {
-  display: inline-block;
-  padding: 3px 8px;
-  margin-right: 5px;
-  color: $tagcolor;
-  background-color: $tagbkg;
-  border-radius: 3px;
-  font-size: .8em;
-  font-weight: 300;
-}
-.tag-input {
-  position: relative;
-  margin: 20px 0;
-  cursor: text;
-  background-color: #fff;
-
-  input {
-    border: none;
-    padding: 2px 0;
-    margin-left: 3px;
-    font-size: .8em;
-
-    &:focus { outline: 0 }
-  }
-
-  .hidden {
-    position: absolute;
-    opacity: 0;
-    left: 0;
-  }
+  line-height: @contentLineHeight;
 }
 
 /* Style for Editor */
 .md-panel {
   display: block;
   position: relative;
+  margin-top: 40px;
   border: 1px solid #ccc;
   border-radius: 3px;
   font-size: 14px;
@@ -63,14 +30,26 @@
     bottom: 0;
     left: 0;
     right: 0;
+    margin: 0;
+    z-index: 500;
 
     .md-editor {
-      // position: absolute;
-      // top: 0;
-      // bottom: 0;
-      // left: 0;
-      // right: 0;
       height: 100%;
+    }
+  }
+
+  &.disabled {
+    textarea { cursor: default; }
+    .tb-btn a {
+      cursor: default;
+
+      &:hover {
+        color: #aaa;
+        background-color: #fff;
+      }
+      &:active {
+        box-shadow: none;
+      }
     }
   }
 }
@@ -79,10 +58,11 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: $toolbarHeight;
+  height: @toolbarHeight;
   border-bottom: 1px solid #ccc;
   box-shadow: 0 0 1px #ccc;
   z-index: 10;
+  background-color: #fff;
 }
 .md-toolbar, .md-modebar {
   margin: 0;
@@ -91,36 +71,49 @@
   padding: 0 5px;
   background-color: #fff;
 }
-.tb-btn {
+.tb-btn, .tb-func-btn {
   float: left;
-  font-size: 16px;
-  color: #aaa;
+  font-size: 14px;
   list-style: none;
   margin: 0 2px;
 
   &.spliter {
-    border-left: 1px solid $border_color;
+    border-left: 1px solid @borderColor;
     margin: 6px 2px;
     height: 24px;
   }
 
   a {
     display: inline-block;
+    position: relative;
     width: 36px;
     height: 36px;
     text-align: center;
     padding: 9px 0;
     cursor: pointer;
+    color: #aaa;
 
     &:hover, &.active {
-      color: $light_color;
+      color: @lightColor;
       background-color: #eee;
     }
     &:active {
-      box-shadow: inset 0 1px 5px rgba(0,0,0,0.075);
+      box-shadow: inset 0 1px 5px rgba(0,0,0,0.2);
     }
   }
+
+  input[type="file"] {
+    display: none;
+  }
+
+  .badge {
+    position: absolute;
+    padding: 1px 5px;
+    right: 0;
+    bottom: 0;
+  }
 }
+
 .md-editor {
   width: 50%;
   height: auto;
@@ -130,13 +123,15 @@
   &.expand { width: 100%; }
 
   textarea {
+    display: block;
     border-style: none;
     resize: none;
     outline: 0;
     height: 100%;
-    min-height: $editor_height;
+    min-height: @editorHeight;
     width: 100%;
-    padding: ($toolbarHeight + 10px) 15px 0 15px;
+    // margin-top: ;
+    padding: (@toolbarHeight + 10px) 15px 0 15px;
   }
 }
 .md-preview {
@@ -147,7 +142,7 @@
   top: 0;
   background-color: #f6f6f6;
   padding: 45px 20px 20px 20px;
-  border-left: 1px solid $border_color;
+  border-left: 1px solid @borderColor;
   overflow: auto;
   transition: left .3s, width .3s;
 
@@ -165,20 +160,9 @@
   position: absolute;
   top: 0;
   left: 50%;
-  height: $toolbarHeight;
+  height: @toolbarHeight;
   border-left: 1px solid #ccc;
   z-index: 105;
-}
-.md-resizer {
-  position: absolute;
-  width: $resizer_width;
-  height: 4px;
-  left: 50%;
-  margin-left: - $resizer_width / 2;
-  bottom: -7px;
-  border-top: 1px solid $border_color;
-  border-bottom: 1px solid $border_color;
-  cursor: row-resize;
 }
 .md-btngroup {
   margin-top: 20px;
