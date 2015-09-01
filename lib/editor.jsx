@@ -3,11 +3,11 @@ import marked from 'marked'
 import cNames from 'classnames'
 
 import './editor.less'
-import './markdown.less'
 
 const MdEditor = React.createClass({
   propTypes: {
-    content: T.string
+    content: T.string,
+    children: T.node
   },
   getInitialState () {
     return {
@@ -56,19 +56,27 @@ const MdEditor = React.createClass({
   _getToolBar () {
     return (
       <ul className="md-toolbar clearfix">
-        <li className="tb-btn"><a title="加粗" onClick={this._boldText}><i className="fa fa-bold"></i></a></li> {/* bold */}
-        <li className="tb-btn"><a title="斜体" onClick={this._italicText}><i className="fa fa-italic"></i></a></li> {/* italic */}
+        <li className="tb-btn"><a title="加粗" onClick={this._boldText}><i className="fa fa-bold"></i></a></li>{/* bold */}
+        <li className="tb-btn"><a title="斜体" onClick={this._italicText}><i className="fa fa-italic"></i></a></li>{/* italic */}
         <li className="tb-btn spliter"></li>
-        <li className="tb-btn"><a title="链接" onClick={this._linkText}><i className="fa fa-link"></i></a></li> {/* link */}
-        <li className="tb-btn"><a title="引用" onClick={this._blockquoteText}><i className="fa fa-outdent"></i></a></li> {/* blockquote */}
-        <li className="tb-btn"><a title="代码段" onClick={this._codeText}><i className="fa fa-code"></i></a></li> {/* code */}
-        <li className="tb-btn"><a title="图片" onClick={this._pictureText}><i className="fa fa-picture-o"></i></a></li> {/* picture-o */}
+        <li className="tb-btn"><a title="链接" onClick={this._linkText}><i className="fa fa-link"></i></a></li>{/* link */}
+        <li className="tb-btn"><a title="引用" onClick={this._blockquoteText}><i className="fa fa-outdent"></i></a></li>{/* blockquote */}
+        <li className="tb-btn"><a title="代码段" onClick={this._codeText}><i className="fa fa-code"></i></a></li>{/* code */}
+        <li className="tb-btn"><a title="图片" onClick={this._pictureText}><i className="fa fa-picture-o"></i></a></li>{/* picture-o */}
         <li className="tb-btn spliter"></li>
-        <li className="tb-btn"><a title="有序列表" onClick={this._listOlText}><i className="fa fa-list-ol"></i></a></li> {/* list-ol */}
-        <li className="tb-btn"><a title="无序列表" onClick={this._listUlText}><i className="fa fa-list-ul"></i></a></li> {/* list-ul */}
-        <li className="tb-btn"><a title="标题" onClick={this._headerText}><i className="fa fa-header"></i></a></li> {/* header */}
+        <li className="tb-btn"><a title="有序列表" onClick={this._listOlText}><i className="fa fa-list-ol"></i></a></li>{/* list-ol */}
+        <li className="tb-btn"><a title="无序列表" onClick={this._listUlText}><i className="fa fa-list-ul"></i></a></li>{/* list-ul */}
+        <li className="tb-btn"><a title="标题" onClick={this._headerText}><i className="fa fa-header"></i></a></li>{/* header */}
+        {this._getExternalBtn()}
       </ul>
     )
+  },
+  _getExternalBtn () {
+    return React.Children.map(this.props.children, (option) => {
+      if (option.type === 'option') {
+        return <li className="tb-btn"><a {...option.props}>{option.props.children}</a></li>
+      }
+    })
   },
   _getModeBar () {
     const checkActive = (mode) => cNames({ active: this.state.mode === mode })

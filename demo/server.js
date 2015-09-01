@@ -8,7 +8,7 @@ var config = require('../config')
 var webpackDevPort = config.webpackDevPort
 
 new WebpackDevServer(webpack(webpackDevConfig), {
-  contentBase: './src',
+  contentBase: './demo',
   publicPath: webpackDevConfig.output.publicPath,
   hot: true,
   historyApiFallback: true

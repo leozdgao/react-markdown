@@ -7,7 +7,7 @@
   },
   "scripts": {
     "publish": "webpack && webpack --config webpack.min.config.js -p",
-    "dev": "node src/server"
+    "dev": "node demo/server"
   },
   "author": "leozdgao",
   "license": "MIT",

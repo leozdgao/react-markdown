@@ -16,7 +16,7 @@ if (!fs.existsSync(babelCache)) {
 }
 
 // app entry file
-export const entryPoint = './src/browser.js'
+export const entryPoint = './demo/browser.js'
 
 // concat js loader
 export const jsLoader = `babel-loader?cacheDirectory=${babelCache}`
