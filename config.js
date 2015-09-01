@@ -1,4 +1,6 @@
+import path from 'path'
+
 export default {
-  publishPath: 'D:\\www\\assetsss',
+  publishPath: path.join(__dirname, './dist/'),
   webpackDevPort: 3000
 }

@@ -1,6 +1,7 @@
 import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import { options, jsLoader, cssLoader, entryPoint, externals } from './baseConfig'
+import config from '../config'
 
 export default {
   devtool: 'source-map',
@@ -8,10 +9,10 @@ export default {
   externals,
   output: {
     path: process.env['PUBLISHPATH'] || config.publishPath,
-    filename: 'bundle.js'
+    filename: 'react-markdown.js'
   },
   plugins: [
-    new ExtractTextPlugin('bundle.css'),
+    new ExtractTextPlugin('react-markdown.css'),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': '"production"'

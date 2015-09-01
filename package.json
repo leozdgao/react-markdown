@@ -6,6 +6,7 @@
     "github": "https://github.com/leozdgao/react-markdown.git"
   },
   "scripts": {
+    "publish": "webpack && webpack --config webpack.min.config.js -p",
     "dev": "node src/server"
   },
   "author": "leozdgao",
@@ -24,6 +25,7 @@
     "css-loader": "^0.16.0",
     "eslint": "^1.3.1",
     "eslint-plugin-react": "^3.3.0",
+    "extract-text-webpack-plugin": "^0.8.2",
     "less": "^2.5.1",
     "less-loader": "^2.2.0",
     "node-libs-browser": "^0.5.2",
